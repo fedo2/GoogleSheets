@@ -7,31 +7,31 @@ const url = `${base}&sheet=${sheetName}&tq=${query}`;
 // console.log(url);
 const data = [];
 document.addEventListener('DOMContentLoaded', init);
-
 const output = document.querySelector('.output');
 
 function init() {
-    console.log('ready');
+    console.log('=start init()');
     fetch(url)
     .then(res => res.text())
     .then(rep => {
         const jsData = JSON.parse(rep.substr(47).slice(0,-2));
-        console.log(jsData);
+        console.log('jsData=',jsData);
+        console.log('=end fetch()');
+    });
 
-        const header = jsData.table.rows.shift();
-        const h = [];
-        header.c.forEach((temp) => {
-            h.push(temp.v);
-        })
-// data = [{status:'Ano', jmeno: 'Veselý Josef', email: 'joves@example.com},
-//         {status:'Ano', jmeno: 'Veselý Josef', email: 'joves@example.com},
-//         {status:'Ano', jmeno: 'Veselý Josef', email: 'joves@example.com}]
-
-
-        console.log('h=', h);
-        jsData.table.rows[1].c.forEach((temp, ind) => {
-            console.log(ind, temp.v);
-        })
-        })
+        // const h = [];
+        // header.c.forEach((temp) => {
+            //     h.push(temp.v);
+            // })
+            // data = [{status:'Ano', jmeno: 'Novák Jan', email: 'jan.novak@volny.cz},
+            //         {status:'Ne', jmeno: 'Veselý Josef', email: 'joves@example.com},
+            //         {status:'Ano', jmeno: 'Konečná Jana', email: 'jako@example.com}]
+            
+            // console.log('h=', h);
+            // jsData.table.rows[1].c.forEach((temp, ind) => {
+                //     console.log(ind, temp.v);
+                // })
+    // const header = jsData.table.rows.shift();
+    // console.log('header=',header.c[0]);
     }
 
